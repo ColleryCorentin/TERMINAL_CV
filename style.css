@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
+
+}
+
+p {
+    margin-bottom: 2px !important;
+}
+
+#wallpaper {
+    position: fixed;
+    height: auto;
+}
+
+
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+i {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: inherit;
+}
+
+/*
+*drag div
+*/
+
+#figlet {
+    height: 65px;
+}
+
+#terminal {
+    width: 70em;
+    height: 45em;
+    z-index: 9;
+    background-color: black;
+    overflow: auto;
+    border-radius: 7px;
+    position: fixed;
+}
+
+#mydivheader {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    background-color: white;
+    position: fixed;
+    overflow: hidden;
+    width: inherit;
+    text-align: center;
+    font-weight: bold;
+    cursor: move;
+    z-index: 10;
+    color: black;
+}
+
+#content_term {
+    font-size: 11pt;
+    margin: 30px 0 0 10px;
+    padding-top: 10px;
+    color: white;
+}
