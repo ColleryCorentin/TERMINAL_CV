@@ -10,6 +10,10 @@ p {
     margin-bottom: 2px !important;
 }
 
+li {
+    list-style-type: none;
+}
+
 #wallpaper {
     position: fixed;
     height: auto;
@@ -64,4 +68,16 @@ i {
     margin: 30px 0 0 10px;
     padding-top: 10px;
     color: white;
+}
+
+input:focus, textarea {
+    outline: none !important;
+}
+
+.terminal_input {
+    color: white;
+    background-color: black;
+    border: none;
+    margin-left: 4px;
+    width: 98%;
 }
