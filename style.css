@@ -6,12 +6,17 @@
 
 }
 
-p {
+p, .p_about {
     margin-bottom: 2px !important;
 }
 
 li {
     list-style-type: none;
+}
+
+.p_about {
+    display: flex;
+    margin-left: 35px;
 }
 
 #wallpaper {
