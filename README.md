@@ -5,18 +5,10 @@
 _By Corentin Collery_
 
 <p>Mon CV en ligne utilisant HTML | CSS | Javascript</p>
-<br>
-
-### Table des matières
-
-1. [Fonctionnalités](#Fonctionnalités)
-2. [Contact](#Contact)
-
-<br>
 
 ### Fonctionnalités
 
-<ul>Commandes disponibles :
+<ul>- Commandes disponibles :
 <br>
 <br>
     <li style="list-style-type: none;">--help</li>
