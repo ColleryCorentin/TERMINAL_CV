@@ -1,1 +1,1 @@
-<img src="title.png" width="auto" height="200">
+<img src="assets/img/figlet.png" width="auto" height="200">
