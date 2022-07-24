@@ -21,6 +21,10 @@ _By Corentin Collery_
     <li style="list-style-type: none;">clear</li>
 </ul>   
 
+<br>
+
+Lien vers le CV : https://collerycorentin.github.io/TERMINAL_CV/
+
 ### Contact
 
 <ul>
