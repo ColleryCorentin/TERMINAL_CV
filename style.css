@@ -14,16 +14,23 @@ li {
     list-style-type: none;
 }
 
+.li_projets {
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-style: italic;
+}
+
 .p_about {
     display: flex;
     margin-left: 35px;
+    padding-bottom: 10px;
 }
 
 #wallpaper {
     position: fixed;
     height: auto;
 }
-
 
 a {
     text-decoration: none !important;
