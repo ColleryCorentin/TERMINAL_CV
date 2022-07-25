@@ -6,6 +6,10 @@ window.onload = () => {
 dragElement(document.getElementById("terminal"));
 
 
+window.addEventListener("click", function (event) {
+    document.getElementById("terminal_input").focus();
+});
+
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "header")) {
@@ -304,7 +308,6 @@ function projets_input(res) {
 }
 
 function competence_input(res) {
-    console.log("ok")
     input_term.value = ""
     const content_div = document.querySelector(".content_input")
     // crée un nouvel élément div
