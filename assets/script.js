@@ -100,6 +100,7 @@ function script(spt) {
             case 'ls projets':
             case 'ls projects':
             case 'ls project':
+            case 'ls projet':
                 projets_input(res)
                 break
 
@@ -210,7 +211,7 @@ function wget_input(res) {
     var p_res = document.createElement("p")
     newDiv.append(p_res)
     p_res.innerText = "$ " + res
-    window.open('../assets/cv.pdf', '_blank');
+    window.open('assets/cv.pdf', '_blank');
     content_div.appendChild(newDiv);
 }
 
