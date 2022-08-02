@@ -155,7 +155,7 @@ function help_input(res) {
     newDiv.append(p_res)
     newDiv.append(p)
     p_res.innerText = "$ " + res
-    p.innerText = "Commandes valides : --help, cat about, ,ls competence, ls projets, ls education, wget cv, clear"
+    p.innerText = "Commandes valides : --help, cat about, ls competences, ls projets, ls education, wget cv, clear"
     content_div.appendChild(newDiv);
 }
 
