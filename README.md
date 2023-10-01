@@ -23,7 +23,7 @@ _By Corentin Collery_
 
 <br>
 
-Lien vers le CV : https://collerycorentin.github.io/TERMINAL_CV/
+Lien vers le CV :
 
 ### Contact
 

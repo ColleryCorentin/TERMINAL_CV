@@ -1,10 +1,13 @@
+window.addEventListener("load", () => {
+    getDate();
+});
+
 window.onload = () => {
     document.getElementById("terminal_input").focus();
 };
 
-// Make the DIV element draggable:
 dragElement(document.getElementById("terminal"));
-
+dragElement(document.getElementById("note"));
 
 window.addEventListener("click", function (event) {
     document.getElementById("terminal_input").focus();
@@ -13,58 +16,58 @@ window.addEventListener("click", function (event) {
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
         document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        document.getElementById("mydivheader").onmousedown = dragMouseDown;
+        elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
-        // get the mouse cursor position at startup:
         pos3 = e.clientX;
         pos4 = e.clientY;
         document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        // set the element's new position:
-
-        if (elmnt.offsetTop - pos2 >= 0) {
-            if (elmnt.offsetLeft - pos1 >= 0) {
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-        }
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
 
     function closeDragElement() {
-        // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
     }
 }
 
-// Input terminal part
-
 const input_term = (document.getElementById("terminal_input"))
 input_term.addEventListener('keypress', script)
 
+function easterFunction() {
+    const video = document.querySelector('#my_youtube');
+    const terminal = document.getElementById('terminal')
+    terminal.classList.remove('d-block');
+    terminal.classList.add('d-none');
+    video.classList.remove('d-none');
+    video.classList.add('d-block');
+    document.getElementById('my_youtube').src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1'
+}
+
 function script(spt) {
     if (spt.key === "Enter") {
-        const res = (input_term.value)
+        const res = (input_term.value.toLowerCase())
         switch (res) {
+            case 'easter egg':
+                easterFunction(res)
+                break
+
             case '--help' :
             case '-h':
             case '-help':
@@ -73,14 +76,6 @@ function script(spt) {
                 break
 
             case 'cat about':
-            case 'Cat about':
-            case 'CAT about':
-            case 'cat About':
-            case 'Cat About':
-            case 'CAT About':
-            case 'cat ABOUT':
-            case 'Cat ABOUT':
-            case 'CAT ABOUT':
                 about_input(res)
                 break
 
@@ -112,7 +107,6 @@ function script(spt) {
             case 'ls compétences':
             case 'ls competence':
             case 'ls compétence':
-
                 competence_input(res)
                 break
 
@@ -140,7 +134,7 @@ function command_not_find(res) {
     newDiv.append(p_res)
     newDiv.append(p)
     p_res.innerText = "$ " + res
-    p.innerText = "Command not found : " + res
+    p.innerText = "zsh: command not found : " + res
     content_div.appendChild(newDiv);
 }
 
@@ -178,9 +172,9 @@ function about_input(res) {
     p_res.innerText = "$ " + res
     p.innerText = "> Suite à 3 ans d'expérience dans le tourisme, j'ai décidé de me réorienter vers un domaine tout nouveau pour moi : le développement web." +
         "\n" +
-        "> J'ai 23 ans et je suis actuellement étudiant à Epitech." +
+        "> J'ai 25 ans et je suis actuellement étudiant à Epitech." +
         "\n" +
-        "> Je suis à la recherche d'une alternance pour ma deuxième année de formation." +
+        "> Je suis à la recherche d'une alternance débutant en janvier 2024 pour ma deuxième formation." +
         "\n" +
         "> J'ai découvert le monde du développement web en 2020 à la suite de mon bts.\n"
     content_div.appendChild(newDiv);
@@ -235,6 +229,11 @@ function contact_input(res) {
     linkedin.setAttribute('href', 'https://www.linkedin.com/in/collerycorentin/')
     github.setAttribute('href', 'https://github.com/ColleryCorentin')
 
+
+    mail.setAttribute('target', '_blank');
+    linkedin.setAttribute('target', '_blank');
+    github.setAttribute('target', '_blank');
+
     mail.classList.add('p_about');
     linkedin.classList.add('p_about');
     github.classList.add('p_about');
@@ -256,9 +255,7 @@ function contact_input(res) {
 function projets_input(res) {
     input_term.value = ""
     const content_div = document.querySelector(".content_input")
-    // crée un nouvel élément div
     var newDiv = document.createElement("div");
-    // et lui donne un peu de contenu
     var p_res = document.createElement("p")
 
     var twitter = document.createElement("p")
@@ -330,5 +327,93 @@ function competence_input(res) {
     title_primary.innerText = "> Mes Compétences"
     skills.innerText = "HTML | CSS | PHP | My_sql | Javascript | SQL | PhpMyAdmin | Git | Jquery | React | React Native | Bootstrap | Express js | Symphony"
     content_div.appendChild(newDiv);
+}
+
+
+function battery() {
+    navigator.getBattery()
+        .then(function (battery) {
+            var batteryLevel = battery.level * 100;
+            var batteryDiv = document.querySelector(".battery");
+            var batteryPowerDiv = document.getElementById("batteryPowerWidth");
+            batteryDiv.innerHTML = Math.round(batteryLevel) + " %";
+            batteryPowerDiv.style.width = batteryLevel + "%";
+            if (battery.charging) {
+                batteryPowerDiv.style.backgroundColor = "green";
+            } else if (batteryLevel <= 20) {
+                batteryPowerDiv.style.backgroundColor = "red";
+            } else {
+                batteryPowerDiv.style.backgroundColor = "white";
+            }
+        })
+        .catch(function (e) {
+            console.error(e);
+        });
+}
+
+function getDate() {
+    const date = new Date();
+
+    const formattedDate = date.toLocaleString('fr-FR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+    });
+
+    const formatted = date.toLocaleDateString('fr-FR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    const currentDate = document.querySelector(".date");
+    const currentDateNote = document.getElementById("dateNote");
+
+    currentDate.textContent = formattedDate;
+    currentDateNote.textContent = formatted;
 
 }
+
+function currentApp(res) {
+    document.getElementById("currentApp").textContent = res;
+}
+
+function showTerm() {
+    const terminal = document.querySelector('#terminal');
+    terminal.classList.remove('d-none');
+    terminal.classList.add('d-block');
+    currentApp("Terminal")
+}
+
+function showNotes() {
+    const note = document.querySelector('#note');
+    note.classList.remove('d-none');
+    note.classList.add('d-block');
+    currentApp("Note")
+}
+
+function closeTerm() {
+    const terminal = document.querySelector('#terminal');
+    terminal.classList.remove('d-block');
+    terminal.classList.add('d-none');
+    clear()
+    currentApp("")
+}
+
+function closeNote() {
+    const note = document.querySelector('#note');
+    note.classList.remove('d-block');
+    note.classList.add('d-none');
+    clear()
+    currentApp("")
+}
+
+
+setInterval(getDate, 1000)
+battery()
+setInterval(battery, 1000);
+

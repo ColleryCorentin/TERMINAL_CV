@@ -24,6 +24,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link href="style.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
@@ -32,47 +33,212 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet">
     <link href="assets/img/icons.png" rel="icon">
-
     <title>Terminal_CV</title>
 </head>
 <body>
+
 <div>
-    <img alt="wallPaper" id="wallpaper" src="assets/img/WallPaper.jpg">
+    <img alt="wallPaper" class="position-fixed h-auto" id="wallpaper" src="assets/img/img.png">
+</div>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen class="d-none z-3"
+            height="315" id="my_youtube"
+            title="YouTube video player"
+            width="560"></iframe>
 </div>
 
+<div class="row padding-none">
+    <div class="col-12 position-fixed d-flex nav d-flex  align-items-center text-light gap-3">
+        <img alt="" class="h-50 " src="./assets/icons/apple_icon.png" style="margin-left: 20px;">
+        <p class="fw-bold" id="currentApp"></p>
+        <p class="cursor-pointer">Fichier</p>
+        <p class="cursor-pointer">Modifier</p>
+        <p class="cursor-pointer">Afficher</p>
+        <p class="cursor-pointer d-none d-md-block">Historique</p>
 
-<div id="terminal">
-    <div id="mydivheader">corentin.collery@epitech.eu</div>
-    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-    <div id="content_term">
-        <img alt="figlet_img" id="figlet" src="assets/img/figlet.png">
-        <p>$ Bonjour, Je suis Corentin Collery</p>
-        <p>$</p>
-        <p>$ Vous pouvez m'envoyez un mail à l'adresse : <a href="mailto:corentin.collery@epitech.eu">"corentin.collery@epitech.eu"</a>
-            && me retrouver sur :
-            <a href="https://github.com/ColleryCorentin" target="_blank"><i class="devicon-github-original"></i></a>
-            <a href="https://www.linkedin.com/in/collerycorentin/" target="_blank"><i
-                    class="devicon-linkedin-plain"></i></a>
-        </p>
-        <p>$</p>
-        <!--   <p>$ Étudie à Epitech Lille</p>-->
-        <p>$ Commandes valides avec --help :</p>
-        <ul>
-            <li> > cat about</li>
-            <li> > ls competences</li>
-            <li> > ls projets</li>
-            <li> > ls education</li>
-            <li> > wget cv</li>
-            <li> > cat contact</li>
-            <li> > clear</li>
-        </ul>
-        <div class="content_input" id="clear_div"></div>
-        $<span class="span_input"><input class="terminal_input" id="terminal_input" type="text" value></span>
+        <div class="col-12 d-flex justify-content-end position-absolute gap-2 align-items-center">
+            <div class="battery d-none d-md-block" id="battery"></div>
+            <div class="batteryPower" id="batteryPower">
+                <span id="batteryPowerWidth"></span>
+            </div>
+            <div class="date me-3 ps-2 d-none d-sm-block" id="date"></div>
+            <!--<div class="batteryPower" id="batteryPower">
+                <span id="batteryPowerWidth"></span>
+            </div>
+            <div class="date me-3 ps-2 d-none d-sm-block" id="date"></div>
+-->
+        </div>
+    </div>
+
+
+    <!--
+        Terminal start
+    -->
+    <div class="col-l-12 col-md-8 position-fixed h-75" id="terminal">
+        <div id="mydivheader">
+            <div class="position-fixed ms-3">
+                <button class="btn btn-circle btn-danger" onclick="closeTerm()" type="button"></button>
+                <button class="btn btn-circle btn-warning" type="button"></button>
+                <button class="btn btn-circle btn-success" type="button"></button>
+            </div>
+            Corentin Collery:~/portfolio$
+        </div>
+
+        <div id="content_term">
+            <img alt="figlet_img" id="figlet" src="assets/img/figlet.png">
+            <p>$ Bonjour, Je suis Corentin Collery</p>
+            <p>$</p>
+            <p>$ Vous pouvez m'envoyez un mail à l'adresse : <a href="mailto:corentin.collery@epitech.eu">"corentin.collery@epitech.eu"</a>
+                && me retrouver sur :
+                <a href="https://github.com/ColleryCorentin" target="_blank"><i class="devicon-github-original"></i></a>
+                <a href="https://www.linkedin.com/in/collerycorentin/" target="_blank"><i
+                        class="devicon-linkedin-plain"></i></a>
+            </p>
+            <p>$</p>
+            <p>$ Commandes valides avec --help :</p>
+            <ul>
+                <li> > cat about</li>
+                <li> > ls competences</li>
+                <li> > ls projets</li>
+                <li> > ls education</li>
+                <li> > wget cv</li>
+                <li> > cat contact</li>
+                <li> > clear</li>
+            </ul>
+            <div class="content_input" id="clear_div"></div>
+            $<span class="span_input"><input class="terminal_input" id="terminal_input" type="text" value></span>
+        </div>
+    </div>
+    <div class="note row position-absolute left-35 top-50 position-fixed ms-5">
+        <a class="border-none w-auto">
+            <img alt="note" onclick="showNotes()" src="./assets/icons/notes.png" style="height: 4rem; width: 4rem">
+        </a>
+    </div>
+
+
+    <!--
+        Terminal end
+    -->
+
+    <!--
+        Note start
+    -->
+    <div class="row">
+        <div class="position-fixed d-block col-sm-12 rounded-top rounded-3 col-lg-6 align-items-center d-none"
+             id="note">
+            <div class="bg-light d-flex justify-content-between align-items-center p-2 rounded-top ps-3">
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <button class="btn btn-circle btn-danger" onclick="closeNote()" type="button"></button>
+                        <button class="btn btn-circle btn-warning" type="button"></button>
+                        <button class="btn btn-circle btn-success" type="button"></button>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-none d-md-block">
+                        <span class="me-2"><img alt="delete"
+                                                src="assets/icons/note/baseline_delete_black_24dp.png"></span>
+                        <span class="me-2"><img alt="delete" src="assets/icons/note/baseline_add_black_24dp.png"></span>
+                        <span class="me-2"><img alt="delete"
+                                                src="assets/icons/note/baseline_edit_black_24dp.png"></span>
+                        <span class="me-2"><img alt="delete"
+                                                src="assets/icons/note/baseline_grid_view_black_24dp.png"></span>
+                        <label>
+                            <input class="search ps-2" name="search" placeholder="Recherche" type="search"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row padding-none" id="content_note">
+                <div class="col-md-4 leftNote fw-bold pt-2 ps-2 pe-2 ">
+                    <p class="bg-warning rounded ps-2 mt-2 cursor-pointer noteLeft ">Note personnelle</p>
+                </div>
+                <div class="col-md-8 rightNote pb-5 pt-2 ps-3 d-grid gap-3">
+                    <p class="text-center text-secondary pb-2" id="dateNote"></p>
+                    <p class="">Nom : Corentin Collery</p>
+                    <p>Étudiant en pré-MSC à Epitech</p>
+                    <p>Mon CV est accessible dans le terminal de mon application web. N'hésitez pas à le consulter pour
+                        en
+                        savoir plus sur mon parcours académique et mes compétences en informatique. Vous pouvez me
+                        contacter
+                        via
+                        les informations fournies dans le CV.</p>
+                    <p>Merci de votre intérêt !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        Note end
+    -->
+
+    <div class="row position-absolute bottom-0 h-5 justify-content-center pb-3 ">
+        <div class="col-auto dock d-none d-lg-block">
+            <a class="icon border-none">
+                <img alt="" class="hidden" src="./assets/icons/finder.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="" class="hidden" src="./assets/icons/launchpad.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="appstore" class="hidden" src="./assets/icons/appstore.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="message" class="hidden" src="./assets/icons/message.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="music" class="hidden" src="./assets/icons/music.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="vscode" class="hidden" src="./assets/icons/vscode.svg" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none" href="mailto:corentin.collery@epitech.eu">
+                <img alt="mail" class="hidden" src="./assets/icons/mail.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt=photos"" class="hidden" src="./assets/icons/photos.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="maps" class="hidden" src="./assets/icons/maps.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="calculator" class="hidden" src="./assets/icons/calculator.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="terminal" class="hidden" onclick="showTerm()" src="./assets/icons/terminal.png"
+                     style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="bin" class="hidden" src="./assets/icons/bin.png" style="width: 4rem"/>
+            </a>
+        </div>
+    </div>
+
+    <div class="row position-absolute bottom-0 h-5 justify-content-center pb-3 ">
+        <div class="col-auto dock d-sm-block d-lg-none">
+            <a class="icon border-none">
+                <img alt="" class="hidden" src="./assets/icons/finder.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none" href="mailto:corentin.collery@epitech.eu">
+                <img alt="mail" class="hidden" src="./assets/icons/mail.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="calculator" class="hidden" src="./assets/icons/calculator.png" style="width: 4rem"/>
+            </a>
+            <a class="icon border-none">
+                <img alt="terminal" class="hidden" onclick="showTerm()" src="./assets/icons/terminal.png"
+                     style="width: 4rem"/>
+            </a>
+        </div>
     </div>
 </div>
 </body>
 <script crossorigin="anonymous"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/script.js"></script>
+<script src="js/script.js"></script>
+<script src="js/calculator.js"></script>
 </html>
