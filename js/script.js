@@ -62,7 +62,7 @@ function easterFunction() {
 
 function script(spt) {
     if (spt.key === "Enter") {
-        const res = (input_term.value.toLowerCase())
+        const res = (input_term.value.toLowerCase().trim())
         switch (res) {
             case 'easter egg':
                 easterFunction(res)
