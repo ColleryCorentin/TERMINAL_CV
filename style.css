@@ -84,6 +84,7 @@ li {
     overflow: auto;
     font-family: 'Rajdhani', sans-serif;
     z-index: 1 !important;
+    display: none;
 }
 
 #content_term {
